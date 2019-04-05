@@ -1,6 +1,6 @@
 package org.project.system.productsearch.service;
 
-import org.project.system.productsearch.model.Product;
+import org.project.system.productsearch.domain.Product;
 
 public interface ProductSearchService {
 

@@ -1,9 +1,8 @@
-package org.project.system.product.model.attribute;
+package org.project.system.product.domain.attribute;
 
 import lombok.Data;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.project.system.user.model.Account;
 import org.project.system.user.model.User;
 
 import javax.persistence.Entity;

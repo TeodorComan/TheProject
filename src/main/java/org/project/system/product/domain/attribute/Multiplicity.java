@@ -1,4 +1,4 @@
-package org.project.system.product.model.attribute;
+package org.project.system.product.domain.attribute;
 
 public enum Multiplicity {
     SINGLE,

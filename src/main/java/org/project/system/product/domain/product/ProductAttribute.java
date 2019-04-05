@@ -1,7 +1,7 @@
-package org.project.system.product.model.product;
+package org.project.system.product.domain.product;
 
 import lombok.Data;
-import org.project.system.product.model.attribute.Attribute;
+import org.project.system.product.domain.attribute.Attribute;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

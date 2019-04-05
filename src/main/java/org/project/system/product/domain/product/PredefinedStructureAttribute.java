@@ -1,7 +1,7 @@
-package org.project.system.product.model.product;
+package org.project.system.product.domain.product;
 
 import lombok.Data;
-import org.project.system.product.model.attribute.Attribute;
+import org.project.system.product.domain.attribute.Attribute;
 
 /**
  * Describes the behaviour of an {@link Attribute} in relationship to a certain {@link PredefinedStructure}.

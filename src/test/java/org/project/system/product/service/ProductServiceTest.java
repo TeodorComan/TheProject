@@ -9,11 +9,11 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.project.system.product.ProductException;
-import org.project.system.product.model.attribute.Attribute;
-import org.project.system.product.model.product.PredefinedStructure;
-import org.project.system.product.model.product.PredefinedStructureAttribute;
-import org.project.system.product.model.product.Product;
-import org.project.system.product.model.product.ProductAttribute;
+import org.project.system.product.domain.attribute.Attribute;
+import org.project.system.product.domain.product.PredefinedStructure;
+import org.project.system.product.domain.product.PredefinedStructureAttribute;
+import org.project.system.product.domain.product.Product;
+import org.project.system.product.domain.product.ProductAttribute;
 import org.project.system.product.repository.ProductRepository;
 import org.project.system.productsearch.service.ProductSearchService;
 

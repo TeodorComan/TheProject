@@ -1,4 +1,4 @@
-package org.project.system.product.model.product;
+package org.project.system.product.domain.product;
 
 public enum RelationshipType {
     CUSTOM,
