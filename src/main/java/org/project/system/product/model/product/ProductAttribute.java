@@ -1,12 +1,20 @@
 package org.project.system.product.model.product;
 
+import lombok.Data;
 import org.project.system.product.model.attribute.Attribute;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Specify the value of an attribute for a certain product.
  */
+@Data
+@Entity
 public class ProductAttribute {
 
+    @Id
+    private Long id;
     private Attribute attribute;
     private String value;
 

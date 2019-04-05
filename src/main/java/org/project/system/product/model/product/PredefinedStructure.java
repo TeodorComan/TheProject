@@ -1,8 +1,9 @@
 package org.project.system.product.model.product;
 
-import org.project.system.user.model.Account;
+import lombok.Data;
 import org.project.system.user.model.User;
 
+import javax.persistence.Entity;
 import java.util.List;
 
 /**
@@ -10,6 +11,8 @@ import java.util.List;
  * Ex. A book has attributes like: author, year in which it was written, etc. All books would have such attributes.
  * It is entirely up to the user how a product type is defined and not mandatory for a Product to actually have a predefined structure.
  */
+@Entity
+@Data
 public class PredefinedStructure {
     private String name;
     private String description;
