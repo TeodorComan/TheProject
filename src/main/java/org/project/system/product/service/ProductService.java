@@ -44,7 +44,7 @@ public class ProductService {
         User user = userService.find(request.getUserId()).orElseThrow(()->new ProductException("Unknown user"));
 
         if(request.getPredefinedStructureId()!=null){
-            predefinedStructure = predefinedStructureService.find(request.getPredefinedStructureId()).orElseThrow(()->new ProductException("PredefinedStructure doesn't exist"));
+            predefinedStructure = predefinedStructureService.find(request.getPredefinedStructureId());
 
             if(!predefinedStructure.getCreatedBy().getOwner().equals(user.getOwner())){
                 throw new ProductException("PredefinedStructure not owned by User");

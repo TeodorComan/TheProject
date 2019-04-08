@@ -85,7 +85,7 @@ public class ProductServiceTest {
         predefinedStructure.setStructureAttributes(structureAttributes);
         structureAttributes.add(predefinedStructureAttribute);
 
-        Mockito.when(predefinedStructureService.find(1l)).thenReturn(Optional.of(predefinedStructure));
+        Mockito.when(predefinedStructureService.find(1l)).thenReturn(predefinedStructure);
 
         User requestUser = generateUserWithOwner(2L,1L);
         Mockito.when(userService.find(2L)).thenReturn(Optional.of(requestUser));
@@ -113,7 +113,7 @@ public class ProductServiceTest {
         predefinedStructure.setStructureAttributes(structureAttributes);
         structureAttributes.add(predefinedStructureAttribute);
 
-        Mockito.when(predefinedStructureService.find(1l)).thenReturn(Optional.of(predefinedStructure));
+        Mockito.when(predefinedStructureService.find(1l)).thenReturn(predefinedStructure);
 
         User requestUser = generateUserWithOwner(2L,3L);
         requestUser.setOwner(predefinedStructure.getCreatedBy().getOwner());
@@ -134,7 +134,7 @@ public class ProductServiceTest {
         saveProductRequest.setUserId(2L);
 
         PredefinedStructure predefinedStructure = generatePredefinedStructureWithUser();
-        Mockito.when(predefinedStructureService.find(1L)).thenReturn(Optional.of(predefinedStructure));
+        Mockito.when(predefinedStructureService.find(1L)).thenReturn(predefinedStructure);
 
         User requestUser = generateUserWithOwner(2L,3L);
         Mockito.when(userService.find(2l)).thenReturn(Optional.of(requestUser));
@@ -142,24 +142,6 @@ public class ProductServiceTest {
 
         exception.expect(ProductException.class);
         exception.expectMessage("PredefinedStructure not owned by User");
-
-        productService.saveProduct(saveProductRequest);
-    }
-
-    @Test
-    public void test_CreateProductWithUnknownPredefinedStructure() throws ProductException{
-        SaveProductRequest saveProductRequest = new SaveProductRequest();
-        saveProductRequest.setPredefinedStructureId(1l);
-        saveProductRequest.setUserId(2L);
-
-        Mockito.when(predefinedStructureService.find(1l)).thenReturn(Optional.empty());
-
-        User requestUser = generateUserWithOwner(2L,3L);
-        Mockito.when(userService.find(2l)).thenReturn(Optional.of(requestUser));
-
-
-        exception.expect(ProductException.class);
-        exception.expectMessage("PredefinedStructure doesn't exist");
 
         productService.saveProduct(saveProductRequest);
     }
@@ -192,7 +174,7 @@ public class ProductServiceTest {
         predefinedStructure.setStructureAttributes(structureAttributes);
         structureAttributes.add(predefinedStructureAttribute);
 
-        Mockito.when(predefinedStructureService.find(1l)).thenReturn(Optional.of(predefinedStructure));
+        Mockito.when(predefinedStructureService.find(1l)).thenReturn(predefinedStructure);
         Mockito.when(attributeService.find(1L)).thenReturn(structureAttribute);
 
         productService.saveProduct(saveProductRequest);
