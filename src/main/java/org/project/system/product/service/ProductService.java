@@ -41,7 +41,7 @@ public class ProductService {
     public SaveProductResponse saveProduct(SaveProductRequest request) throws ProductException{
 
         PredefinedStructure predefinedStructure = null;
-        User user = userService.find(request.getUserId()).orElseThrow(()->new ProductException("Unknown user"));
+        User user = userService.find(request.getUserId());
 
         if(request.getPredefinedStructureId()!=null){
             predefinedStructure = predefinedStructureService.find(request.getPredefinedStructureId());

@@ -88,7 +88,7 @@ public class ProductServiceTest {
         Mockito.when(predefinedStructureService.find(1l)).thenReturn(predefinedStructure);
 
         User requestUser = generateUserWithOwner(2L,1L);
-        Mockito.when(userService.find(2L)).thenReturn(Optional.of(requestUser));
+        Mockito.when(userService.find(2L)).thenReturn(requestUser);
 
         exception.expect(ProductException.class);
         exception.expectMessage("Product attributes are different than specified in the predefined structure");
@@ -117,7 +117,7 @@ public class ProductServiceTest {
 
         User requestUser = generateUserWithOwner(2L,3L);
         requestUser.setOwner(predefinedStructure.getCreatedBy().getOwner());
-        Mockito.when(userService.find(2l)).thenReturn(Optional.of(requestUser));
+        Mockito.when(userService.find(2l)).thenReturn(requestUser);
 
 
         exception.expect(ProductException.class);
@@ -137,7 +137,7 @@ public class ProductServiceTest {
         Mockito.when(predefinedStructureService.find(1L)).thenReturn(predefinedStructure);
 
         User requestUser = generateUserWithOwner(2L,3L);
-        Mockito.when(userService.find(2l)).thenReturn(Optional.of(requestUser));
+        Mockito.when(userService.find(2l)).thenReturn(requestUser);
 
 
         exception.expect(ProductException.class);
@@ -161,7 +161,7 @@ public class ProductServiceTest {
         saveProductRequest.setAttributes(attributes);
 
         User requestUser = generateUserWithOwner(1L,1L);
-        Mockito.when(userService.find(1l)).thenReturn(Optional.of(requestUser));
+        Mockito.when(userService.find(1l)).thenReturn(requestUser);
 
         PredefinedStructure predefinedStructure = generatePredefinedStructureWithUser();
         List<PredefinedStructureAttribute> structureAttributes = new ArrayList();
