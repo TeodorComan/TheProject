@@ -37,23 +37,6 @@ public class ProductService {
     @Autowired
     PredefinedStructureService predefinedStructureService;
 
-    public void setPredefinedStructureService(PredefinedStructureService predefinedStructureService) {
-        this.predefinedStructureService = predefinedStructureService;
-    }
-
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
-
-    public void setProductRepository(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
-
-    public void setProductSearchService(ProductSearchService productSearchService) {
-        this.productSearchService = productSearchService;
-    }
-
-
     @Transactional
     public SaveProductResponse saveProduct(SaveProductRequest request) throws ProductException{
 
@@ -78,6 +61,8 @@ public class ProductService {
         product.setProductAttributes(constructProductAttributes(request.getAttributes()));
 
         Product savedProduct = productRepository.saveAndFlush(product);
+
+        productSearchService.register(new org.project.system.productsearch.domain.Product(product));
 
         SaveProductResponse saveProductResponse = new SaveProductResponse();
         saveProductResponse.setProduct(savedProduct);
@@ -107,7 +92,7 @@ public class ProductService {
         List<org.project.system.product.service.model.Attribute> auxiliaryProductAttributeList = productAttributeList !=null ? new ArrayList(productAttributeList) : new ArrayList<>();
 
         for(PredefinedStructureAttribute predefinedStructureAttribute : predefinedStructure.getStructureAttributes()){
-            int index =getIndexOfAttribute(predefinedStructure,auxiliaryProductAttributeList);
+            int index =getIndexOfAttribute(predefinedStructureAttribute,auxiliaryProductAttributeList);
 
             // if the product has the attribute defined by the predefinedStructure, remove it from the auxiliary list
             // later check the auxiliary list length
@@ -124,10 +109,10 @@ public class ProductService {
         }
     }
 
-    private int getIndexOfAttribute(PredefinedStructure predefinedStructure, List<org.project.system.product.service.model.Attribute> productAttributeList) {
+    private int getIndexOfAttribute(PredefinedStructureAttribute predefinedStructureAttribute, List<org.project.system.product.service.model.Attribute> productAttributeList) {
 
         for (int i = 0; i < productAttributeList.size(); i ++) {
-            if(productAttributeList.get(i).getId().equals(predefinedStructure.getId())){
+            if(productAttributeList.get(i).getId().equals(predefinedStructureAttribute.getAttribute().getId())){
                 return i;
             }
         }
