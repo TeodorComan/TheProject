@@ -3,7 +3,7 @@ package org.project.system.product.domain.attribute;
 import lombok.Data;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.project.system.user.model.User;
+import org.project.system.user.domain.User;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

@@ -1,9 +1,10 @@
 package org.project.system.product.domain.product;
 
 import lombok.Data;
-import org.project.system.user.model.User;
+import org.project.system.user.domain.User;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.List;
 
 /**
@@ -14,6 +15,9 @@ import java.util.List;
 @Entity
 @Data
 public class PredefinedStructure {
+
+    @Id
+    private Long id;
     private String name;
     private String description;
     private List<PredefinedStructureAttribute> structureAttributes;
