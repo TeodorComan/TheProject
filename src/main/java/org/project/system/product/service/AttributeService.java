@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class AttributeService {
 
     @Autowired
-    AttributeRepository attributeRepository;
+    private AttributeRepository attributeRepository;
 
     public Attribute find(Long id) throws ProductException {
         return attributeRepository.findById(id).orElseThrow(()-> new ProductException("Attribute doesn't exist"));
