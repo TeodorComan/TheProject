@@ -9,4 +9,5 @@ public class Attribute {
 
     private Long id;
     private String value;
+    private Boolean isMandatory;
 }
