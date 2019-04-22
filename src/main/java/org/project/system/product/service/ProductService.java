@@ -46,7 +46,7 @@ public class ProductService {
         if(request.getPredefinedStructureId()!=null){
             predefinedStructure = predefinedStructureService.find(request.getPredefinedStructureId());
 
-            if(!predefinedStructure.getCreatedBy().getOwner().equals(user.getOwner())){
+            if(!predefinedStructure.getUser().getAccount().equals(user.getAccount())){
                 throw new ProductException("PredefinedStructure not owned by User");
             }
 
@@ -54,11 +54,12 @@ public class ProductService {
         }
 
         Product product = new Product();
-        product.setCreatedBy(user);
+        product.setUser(user);
         product.setDescription(request.getDescription());
         product.setName(request.getName());
         product.setPredefinedStructure(predefinedStructure);
         product.setProductAttributes(constructProductAttributes(request.getAttributes()));
+        product.setAccount(user.getAccount());
 
         Product savedProduct = productRepository.saveAndFlush(product);
 

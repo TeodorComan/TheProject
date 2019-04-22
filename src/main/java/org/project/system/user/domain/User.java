@@ -6,5 +6,5 @@ import lombok.Data;
 public class User {
 
     private Long id;
-    private Account owner;
+    private Account account;
 }

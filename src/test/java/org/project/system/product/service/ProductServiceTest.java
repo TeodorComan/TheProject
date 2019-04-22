@@ -26,7 +26,6 @@ import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ProductServiceTest {
@@ -116,7 +115,7 @@ public class ProductServiceTest {
         Mockito.when(predefinedStructureService.find(1l)).thenReturn(predefinedStructure);
 
         User requestUser = generateUserWithOwner(2L,3L);
-        requestUser.setOwner(predefinedStructure.getCreatedBy().getOwner());
+        requestUser.setAccount(predefinedStructure.getUser().getAccount());
         Mockito.when(userService.find(2l)).thenReturn(requestUser);
 
 
@@ -185,6 +184,7 @@ public class ProductServiceTest {
 
         Assert.assertEquals(attribute.getId(),captor.getValue().getProductAttributes().get(0).getAttribute().getId());
         Assert.assertEquals("red",captor.getValue().getProductAttributes().get(0).getValue());
+        Assert.assertEquals(requestUser.getAccount(),captor.getValue().getAccount());
 
 
         Mockito.verify(productSearchService).register(Mockito.any());
@@ -195,7 +195,7 @@ public class ProductServiceTest {
     private PredefinedStructure generatePredefinedStructureWithUser(){
         PredefinedStructure predefinedStructure = new PredefinedStructure();
         predefinedStructure.setId(1L);
-        predefinedStructure.setCreatedBy(generateUserWithOwner(1L,1L));
+        predefinedStructure.setUser(generateUserWithOwner(1L,1L));
 
         return predefinedStructure;
     }
@@ -205,7 +205,7 @@ public class ProductServiceTest {
         user.setId(userId);
         Account owner = new Account();
         owner.setId(ownerId);
-        user.setOwner(owner);
+        user.setAccount(owner);
 
         return user;
     }
